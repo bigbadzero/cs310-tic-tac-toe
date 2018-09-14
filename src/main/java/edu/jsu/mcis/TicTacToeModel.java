@@ -79,7 +79,8 @@ public class TicTacToeModel {
 
         for (int i=0; i < width; i++){
                 for(int j; j < width; j++){
-                    grid[i][j]= mark.empty;
+                    grid[i][j] = Mark.EMPTY;
+
 
 
             }
@@ -93,9 +94,22 @@ public class TicTacToeModel {
            location, but only if the location is valid and if the square is
            empty! */
         
-        /* INSERT YOUR CODE HERE */
+        
+        boolean madeMark = false;
+        if(isValidSquare(row, col)){
+            if(!isSquareMarked(row, col)){
+                madeMark = true;
+                if(xTurn == ture){
+                    grid[row][col] = Mark.X;
+                }
+                else{
+                    grid[row][col] = Mark.O;
+                }
 
-        return false; /* remove this line! */
+            }
+        }
+
+        return false; 
         
     }
 	
@@ -103,9 +117,13 @@ public class TicTacToeModel {
         
         /* Return true if specified location is within grid bounds */
         
-        /* INSERT YOUR CODE HERE */
+        
+        boolean valid = false;
+        if ((row < this.width && (col < this.width))){
+            valid = true:
+        }
 
-        return false; /* remove this line! */
+        return valid; 
         
     }
 	
@@ -114,8 +132,12 @@ public class TicTacToeModel {
         /* Return true if square at specified location is marked */
         
         /* INSERT YOUR CODE HERE */
+        boolean marked = false;
+        if (isValidSquare(row, col)){
+            if (grid[row][col] != Mark.EMPTY)
+        }
 
-        return false; /* remove this line! */
+        return marked; 
             
     }
 	
@@ -123,10 +145,13 @@ public class TicTacToeModel {
         
         /* Return mark from the square at the specified location */
         
-        /* INSERT YOUR CODE HERE */
-
-        return null; /* remove this line! */
-            
+        
+        if(isValidSquare(row, col)){
+            return grid[i][j];
+            }
+        }
+        else
+        return null;  
     }
 	
     public Result getResult() {
@@ -136,6 +161,10 @@ public class TicTacToeModel {
            value */
         
         /* INSERT YOUR CODE HERE */
+        boolean result = false;
+        if(isValidSquare(row,col)){
+            
+        }
 
         return null; /* remove this line! */
 
@@ -147,6 +176,8 @@ public class TicTacToeModel {
            winner */
         
         /* INSERT YOUR CODE HERE */
+
+
 
         return false; /* remove this line! */
 
