@@ -2,6 +2,8 @@ package edu.jsu.mcis;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParsePosition;
+
 import javax.swing.*;
 
 public class TicTacToeView extends JPanel implements ActionListener {
@@ -54,16 +56,38 @@ public class TicTacToeView extends JPanel implements ActionListener {
            method to refresh the View.  If the game is over, show the result
            (from the Model's "getResult()" method) in the result label. */
         
-        String name = ((JButton) event.getSource()).getName(); // Get button name
+        //String name = ((JButton) event.getSource()).getName(); // Get button name
         
         // INSERT YOUR CODE HERE
         
-        model.makeMark(name[row],name[col]);
+        
+        for(int i = 0; i< model.getWidth(); i++){
+            for(int j = 0; j < model.getWidth(); j++){
+                if(this.squares[i][j] == event.getSource()){
+                    model.makeMark(i, j);
+                    
+                }
+                //else{}
+            }
+            
         updateSquares();
+                
         if(model.isGameover()){
-            resultLabel.setText(model.getResult());
-        }
-        else{}
+            resultLabel.setText(model.getResult().toString());     
+                }   
+        //else{}
+            
+            }
+        
+
+        //model.makeMark(row,col);
+        //JButton.getSource().setEnabled(false);
+        //updateSquares();
+        //if(model.isGameover()){
+            //resultLabel.setText(model.getResult().toString());     
+        //}
+        //else{}
+        
     }
         
     public void updateSquares() {
@@ -71,8 +95,8 @@ public class TicTacToeView extends JPanel implements ActionListener {
         /* Loop through all View buttons and (re)set the text of each button
            to reflect the grid contents (use the Model's "getMark()" method). */
 
-        for (int i = 0; i < width; i++){
-            for(int j = 0; j < width; i++){
+        for (int i = 0; i < model.getWidth(); i++){
+            for(int j = 0; j < model.getWidth(); i++){
                 squares[i][j].setText(model.getMark(i,j).toString());
 
             }
