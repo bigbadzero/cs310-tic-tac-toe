@@ -56,28 +56,20 @@ public class TicTacToeView extends JPanel implements ActionListener {
            method to refresh the View.  If the game is over, show the result
            (from the Model's "getResult()" method) in the result label. */
         
-        //String name = ((JButton) event.getSource()).getName(); // Get button name
+        String name = ((JButton) event.getSource()).getName(); // Get button name
         
         // INSERT YOUR CODE HERE
         
         
-        for(int i = 0; i< model.getWidth(); i++){
-            for(int j = 0; j < model.getWidth(); j++){
-                if(this.squares[i][j] == event.getSource()){
-                    model.makeMark(i, j);
-                    
-                }
-                //else{}
-            }
-            
-        updateSquares();
-                
+    
+        int row = Integer.parseInt(name.substring(6, 7));
+        int col = Integer.parseInt(name.substring(7, 8));
+        model.makeMark(row, col);    
+        updateSquares();        
         if(model.isGameover()){
             resultLabel.setText(model.getResult().toString());     
                 }   
-        //else{}
-            
-            }
+        }
         
 
         //model.makeMark(row,col);
@@ -88,7 +80,7 @@ public class TicTacToeView extends JPanel implements ActionListener {
         //}
         //else{}
         
-    }
+    
         
     public void updateSquares() {
 
@@ -96,7 +88,7 @@ public class TicTacToeView extends JPanel implements ActionListener {
            to reflect the grid contents (use the Model's "getMark()" method). */
 
         for (int i = 0; i < model.getWidth(); i++){
-            for(int j = 0; j < model.getWidth(); i++){
+            for(int j = 0; j < model.getWidth(); j++){
                 squares[i][j].setText(model.getMark(i,j).toString());
 
             }
